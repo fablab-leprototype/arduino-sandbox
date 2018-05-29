@@ -1,3 +1,6 @@
+all : install
+.PHONY: all
+
 clean:
 	rm -f led led.o led.hex
 
@@ -11,5 +14,6 @@ led.hex: led
 	avr-objcopy -O ihex -R .eeprom led led.hex
 
 install: led.hex
-	avrdude -F -V -c arduino -p ATMEGA328P -P /dev/ttyACM0 -b 115200 -U flash:w:led.hex
+	# device can also be bound to /dev/ttyACM0 YMMV.
+	avrdude -F -V -c arduino -p ATMEGA328P -P /dev/ttyUSB0 -b 115200 -U flash:w:led.hex
 

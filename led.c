@@ -3,11 +3,11 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <unistd.h> 
-#define BLINK_DELAY_MS 100
+#define BLINK_DELAY_MS 1000
  
 int main (void)
 {
- /* set pin 5 of PORTB for output*/
+ /* set pin 5 (digital pin 13 on uno) of PORTB for output*/
  DDRB |= _BV(DDB5);
  
  while(1) {

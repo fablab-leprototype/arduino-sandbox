@@ -8,11 +8,18 @@
 
 extern "C" void __cxa_pure_virtual() { while (1); }
 
-char array1[]=" SunFounder               "; //the string to print on the LCD
+/* Wiring:
+ * SDA -> A4
+ * SCL -> A5
+ */
+char array1[]=" Elefab                   "; //the string to print on the LCD
 char array2[]="hello, world!             "; //the string to print on the LCD
-int tim = 500; //the value of delay time
+int tim = 1500; //the value of delay time
 // initialize the library with the numbers of the interface pins
-LiquidCrystal_I2C lcd(0x27,16,2); // set the LCD address to 0x27 for a 16 chars and 2 line display
+// addr might be 0x3f or 0x27
+LiquidCrystal_I2C lcd(0x3f,16,2);
+
+
 /*********************************************************/
 void setup()
 {
@@ -23,6 +30,7 @@ void setup()
 void loop()
 {
   lcd.setCursor(15,0); // set the cursor to column 15, line 0
+  lcd.backlight();
   for (int positionCounter1 = 0; positionCounter1 < 26; positionCounter1++)
   {
     lcd.scrollDisplayLeft(); //Scrolls the contents of the display one space to the left.
